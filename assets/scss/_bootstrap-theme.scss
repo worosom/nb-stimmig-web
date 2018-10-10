@@ -1,0 +1,26 @@
+/*! `Custom` Bootstrap 4 theme */
+@import url(https://use.fontawesome.com/releases/v5.0.10/css/all.css);
+@import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,700);
+$font-family-base:Raleway;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700);
+$headings-font-family:Montserrat;
+
+$enable-grid-classes:false;
+$primary:#000000;
+$secondary:#6f7f8c;
+$success:#3e4d59;
+$danger:#cc330d;
+$info:#5c8f94;
+$warning:#6e9fa5;
+$light:#eceeec;
+$dark:#1e2b37;
+$enable-gradients:false;
+$spacer:1.2rem;
+$border-width:3px;
+$btn-border-radius:0;
+$border-radius:0rem;
+$border-radius-lg:0rem;
+$border-radius-sm:0rem;
+@import "./_bootstrap/bootstrap";
+
+// Add SASS theme customizations here..
