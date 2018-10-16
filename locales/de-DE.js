@@ -5,7 +5,7 @@ export default {
     description: 'Die Stimmig Produkte auf einen Blick.',
     content: [
       {
-        name: 'Stimmig Heim'
+        name: 'Stimmig Heim L'
       }
     ]
   },

@@ -40,7 +40,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://bootstrap-vue.js.org/docs/
-    ['bootstrap-vue/nuxt', { css: false }],
+    ['bootstrap-vue/nuxt', { css: true }],
 		['nuxt-i18n', {
 			locales: [
 				{
