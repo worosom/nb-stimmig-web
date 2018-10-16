@@ -1,61 +1,53 @@
-<style scoped lang="scss">
-.catchphrase_container {
-  display: grid;
-  align-content: center;
-}
-img {
-  width: 100%;
+<style lang="scss">
+.card-deck {
+  flex-flow: column;
+  @media (min-width: 992px) {
+    flex-flow: row wrap;
+  }
 }
 </style>
 <template>
-  <section class="pt-4">
-    <b-container>
-      <b-row class="justify-conent-md-center">
-        <b-col cols="12"
-               md="6"
-               class="catchphrase_container">
-          <h1>Stimmig Heim L</h1>
-          <h2>Keule macht laut.</h2>
-        </b-col>
-        <b-col cols="12"
-               md="6">
-          <img src="stimmig_l.jpg">
-        </b-col>
-      </b-row>
-      <b-row class="pt-4">
-        <b-col sm="12"
-               md="4">
-          <h3>Präzision.</h3>
-          <p>
-          Swipp bidabipp min glibki noxu. Labtzn neblung sheka shiku nebluszka. Swipp bidabipp min glibki noxu. Labtzn neblung sheka shiku nebluszka.
-          </p>
-          <nuxt-link to="#accurate">Mehr</nuxt-link>
-        </b-col>
-        <b-col sm="12"
-               md="4">
-          <h3>Flexibilität.</h3>
-          <p>
-          Swipp bidabipp min glibki noxu. Labtzn neblung sheka shiku nebluszka. Swipp bidabipp min glibki noxu. Labtzn neblung sheka shiku nebluszka.
-          </p>
-          <nuxt-link to="#flexible">Mehr</nuxt-link>
-        </b-col>
-        <b-col sm="12"
-               md="4">
-          <h3>Kraft.</h3>
-          <p>
-          Swipp bidabipp min glibki noxu. Labtzn neblung sheka shiku nebluszka. Swipp bidabipp min glibki noxu. Labtzn neblung sheka shiku nebluszka.
-          </p>
-          <nuxt-link to="#powerful">Mehr</nuxt-link>
-        </b-col>
-      </b-row>
-    </b-container>
-  </section>
+  <b-row class="pt-4">
+    <b-col>
+      <b-card-group deck class="info_group">
+        <info-nugget title="Motivation"
+                     :text="info.motivation.text"
+                     :link="info.motivation.link"/>
+        <info-nugget title="Technik"
+                     :text="info.technik.text"
+                     :link="info.technik.link"/>
+        <info-nugget title="Herstellung"
+                     :text="info.herstellung.text"
+                     :link="info.herstellung.link"/>
+      </b-card-group>
+    </b-col>
+  </b-row>
 </template>
 
 <script>
 import Products from '~/components/Products'
+import InfoNugget from '~/components/info-nugget'
 
 export default {
-  components: { Products }
+  components: { Products, InfoNugget },
+  data() {
+    return {
+      info: {
+        motivation: {
+          text: `Constant Directivity als Problemlöser`,
+          link: '/produkte/heim-l#motivation'
+        },
+        technik: {
+          text: `Ziel der Entwicklung ist stets, alle Aspekte gleichermaßen auf das höchstmögliche Niveau zu heben.`,
+          link: '/produkte/heim-l#technik'
+        },
+        herstellung: {
+          text: `STIMMIG Lautsprecher werden komplett in Deutschland in Handarbeit gefertigt.`,
+          link: '/produkte/heim-l#herstellung'
+        }
+
+      }
+    }
+  }
 }
 </script>

@@ -3,7 +3,6 @@
     <nav-bar/>
     <section class="pt-4">
       <b-container>
-        <st-header/>
         <nuxt/>
       </b-container>
     </section>

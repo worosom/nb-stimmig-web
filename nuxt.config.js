@@ -4,8 +4,8 @@ module.exports = {
   mode: 'universal',
 
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
     title: pkg.name,
     meta: [
@@ -17,14 +17,14 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-/*
-  ** Customize the progress-bar color
-  */
+  /*
+   ** Customize the progress-bar color
+   */
   loading: { color: '#fff' },
 
   /*
-  ** Global CSS
-  */
+   ** Global CSS
+   */
   css: [
     '@/assets/scss/main.scss'
   ],
@@ -33,45 +33,68 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/vue-lazyload.js'
   ],
 
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
     // Doc: https://bootstrap-vue.js.org/docs/
     ['bootstrap-vue/nuxt', { css: true }],
-		['nuxt-i18n', {
-			locales: [
-				{
-					code: 'de',
-					file: 'de-DE.js',
-					iso: 'de-DE'
-				}
-			],
-			defaultLocale: 'de',
-			langDir: 'locales/',
-			lazy: true
-		}]
+    ['nuxt-i18n', {
+      locales: [
+        {
+          code: 'de',
+          file: 'de-DE.js',
+          iso: 'de-DE'
+        }
+      ],
+      defaultLocale: 'de',
+      langDir: 'locales/',
+      lazy: true
+    }]
   ],
 
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
     /*
-    ** You can extend webpack config here
-    */
-    // extend(config, ctx) {
-    //   // Run ESLint on save
-    //   if (ctx.isDev && ctx.isClient) {
-    //     config.module.rules.push({
-    //       enforce: 'pre',
-    //       test: /\.(js|vue)$/,
-    //       loader: 'eslint-loader',
-    //       exclude: /(node_modules)/
-    //     })
-    //   }
-    // }
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {
+      //   // Run ESLint on save
+      //   if (ctx.isDev && ctx.isClient) {
+      //     config.module.rules.push({
+      //       enforce: 'pre',
+      //       test: /\.(js|vue)$/,
+      //       loader: 'eslint-loader',
+      //       exclude: /(node_modules)/
+      //     })
+      //   }
+      // now i configure the responsive-loader
+      config.module.rules.find(
+        rule => rule.use ? rule.use[0].loader === 'url-loader' : rule.loader === 'url-loader'
+      ).exclude = /\.(jpe?g|png)$/;
+      config.module.rules.push({
+        test: /\.(jpe?g|png)$/i,
+        use: [
+          {
+            loader: 'responsive-loader',
+            options: {
+              min: 300,
+              max: 2048,
+              steps: 7,
+              silent: false,
+              placeholder: true,
+              placeholderSize: 16,
+              quality: 70,
+              adapter: require("responsive-loader/sharp")
+            }
+          }
+        ]
+      })
+    }
   }
 }

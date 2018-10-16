@@ -6,7 +6,7 @@
 
     <b-navbar-toggle target="nav_collapse"/>
 
-    <b-navbar-brand href="#">STIMMIG</b-navbar-brand>
+    <b-navbar-brand exact to="/">STIMMIG</b-navbar-brand>
 
     <b-collapse
       id="nav_collapse"
