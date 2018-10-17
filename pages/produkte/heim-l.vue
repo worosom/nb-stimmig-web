@@ -14,15 +14,39 @@
   padding-top: 1.5rem;
 }
 
+.spinner {
+  overflow: hidden;
+  min-height: 100vh;
+  video {
+    position: absolute;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
 </style>
 <template>
   <b-row class="pt-4">
     <b-col cols="12">
-      <st-header/>
+      <b-row class="justify-conent-md-center">
+        <b-col cols="12"
+               md="6"
+               class="catchphrase_container">
+          <h1>Stimmig Heim L</h1>
+          <h2>Keule macht laut.</h2>
+        </b-col>
+        <b-col cols="12"
+               md="6"
+               class="spinner">
+          <video autoplay muted loop>
+            <source ref="vid" src="http://stimmig-lautsprechersysteme.de/STIMMIG_Home_L_01_5fps.mp4" type="video/mp4">
+          </video>
+        </b-col>
+      </b-row>
     </b-col>
     <b-col>
       <b-tabs>
-        <b-tab title="Motivation" id="motivation">
+        <b-tab title="Motivation" href="#motivation" id="motivation">
           <b-container>
             <b-form-row>
               <b-col cols="12"
@@ -74,7 +98,7 @@
             </b-form-row>
           </b-container>
         </b-tab>
-        <b-tab title="Technik" id="technik">
+        <b-tab title="Technik" href="#technik" id="technik">
           <b-container>
             <b-form-row>
               <b-col>
@@ -122,7 +146,7 @@
             </b-form-row>
           </b-container>
         </b-tab>
-        <b-tab title="Herstellung" id="herstellung">
+        <b-tab title="Herstellung" href="#herstellung" id="herstellung">
           <b-container>
             <b-form-row>
               <b-col>
@@ -135,6 +159,8 @@
                 <p>
                 Die Verstärkermodule der Firma ABACUS werden ebenfalls in Handarbeit hergestellt.
                 </p>
+              </b-col>
+              <b-col style="background-color: #f0f;">
               </b-col>
             </b-form-row>
           </b-container>
@@ -149,6 +175,10 @@ import StHeader from '~/components/Header'
 
 export default {
   layout: 'product',
-  components: { StHeader }
+  components: { StHeader },
+  mounted() {
+    const hash = location.hash;
+    $(`.nav-tabs a[href="${hash}"]`).addClass('active');
+  }
 }
 </script>

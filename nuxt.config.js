@@ -1,7 +1,12 @@
 const pkg = require('./package')
+const webpack = require("webpack");
+
 
 module.exports = {
   mode: 'universal',
+  router: {
+    base: '/nb-stimmig-web/'
+  },
 
   /*
    ** Headers of the page
@@ -63,6 +68,10 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: "jquery"
+    })],
     extend(config, ctx) {
       //   // Run ESLint on save
       //   if (ctx.isDev && ctx.isClient) {

@@ -4,6 +4,14 @@
  */
 @import "_bootstrap-theme";
 
+.card-deck {
+  flex-flow: column;
+  @media (min-width: 992px) {
+    flex-flow: row wrap;
+  }
+}
+
 .card-text {
   hyphens: auto;
+  margin-bottom: 1.5rem;
 }

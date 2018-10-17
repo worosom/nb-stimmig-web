@@ -13,7 +13,7 @@
       is-nav>
 
       <b-navbar-nav>
-      <b-nav-item href="#produkte">{{$t('produkte.title')}}</b-nav-item>
+      <b-nav-item to="/produkte/heim-l">{{$t('produkte.title')}}</b-nav-item>
         <b-nav-item
           href="#philosophie"
           >{{$t('philosophie.title')}}</b-nav-item>

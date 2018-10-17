@@ -1,10 +1,4 @@
 <style lang="scss">
-.card-deck {
-  flex-flow: column;
-  @media (min-width: 992px) {
-    flex-flow: row wrap;
-  }
-}
 </style>
 <template>
   <b-row class="pt-4">
