@@ -59,6 +59,7 @@ typings/
 
 # next.js build output
 .nuxt
+dist
 
 # Adobe Illustrator files
-*.ai
+^*.ai
