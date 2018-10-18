@@ -44,7 +44,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/vue-lazyload.js'
+    '~/plugins/vue-lazyload.js',
+    '~/plugins/vue-scrollto.js'
   ],
 
   /*

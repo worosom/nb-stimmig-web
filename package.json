@@ -29,6 +29,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-lazyload": "1.2.6",
+    "vue-scrollto": "^2.13.0",
     "webpack": "^4.20.2"
   },
   "devDependencies": {

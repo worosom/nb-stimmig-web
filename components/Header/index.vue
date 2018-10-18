@@ -1,14 +1,20 @@
 <style scoped lang="scss">
+.header_wrap {
+  max-height: 100vh;
+}
 .catchphrase_container {
   display: grid;
   align-content: center;
+  padding-bottom: 33%;
+  margin-bottom: 4rem;
 }
 img {
   width: 100%;
+  z-index: -1;
 }
 </style>
 <template>
-  <b-row class="justify-conent-md-center">
+  <b-row class="header_wrap">
     <b-col cols="12"
            md="6"
            class="catchphrase_container">

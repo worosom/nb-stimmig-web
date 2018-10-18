@@ -2,7 +2,7 @@
   <div class="main_wrap default">
     <nav-bar/>
     <section class="pt-4">
-      <b-container>
+      <b-container class="content_container">
         <st-header/>
         <nuxt/>
       </b-container>

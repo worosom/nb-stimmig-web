@@ -40,7 +40,7 @@
            >
       <b-card>
         <h1 slot="header">STIMMIG Heim L</h1>
-        2 Wege Aktivlautsprecher mit 12 Zoll Constant Directivity Waveguide
+        2 Wege Aktivlautsprecher<br>mit 12 Zoll Constant Directivity Waveguide
         <dl>
           <div v-for="(item, key) in product.specifications" :key="key">
             <dt>
