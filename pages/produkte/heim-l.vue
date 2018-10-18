@@ -16,36 +16,47 @@
 
 .spinner {
   overflow: hidden;
-  min-height: 100vh;
-  video {
-    position: absolute;
-    height: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+  min-height: 70vh;
+  @media ( min-width: 768px ) {
+    min-height: unset;
   }
 }
 </style>
 <template>
   <b-row class="pt-4">
-    <b-col cols="12">
-      <b-row class="justify-conent-md-center">
-        <b-col cols="12"
-               md="6"
-               class="catchphrase_container">
-          <h1>Stimmig Heim L</h1>
-          <h2>Keule macht laut.</h2>
-        </b-col>
-        <b-col cols="12"
-               md="6"
-               class="spinner">
-          <video autoplay muted loop>
-            <source ref="vid" src="http://stimmig-lautsprechersysteme.de/STIMMIG_Home_L_01_5fps.mp4" type="video/mp4">
-          </video>
-        </b-col>
-      </b-row>
+    <b-col cols="12"
+           md="6"
+           order="1"
+           order-md="2"
+           class="spinner">
+      <no-ssr>
+        <product-viewer/>
+      </no-ssr>
     </b-col>
-    <b-col>
-      <b-tabs>
+    <b-col cols="12"
+           md="6"
+           order="3"
+           order-md="1"
+           >
+      <b-card>
+        <h1 slot="header">STIMMIG Heim L</h1>
+        2 Wege Aktivlautsprecher mit 12 Zoll Constant Directivity Waveguide
+        <dl>
+          <div v-for="(item, key) in product.specifications" :key="key">
+            <dt>
+              {{item.key}}:
+            </dt>
+            <dd>
+              {{item.value}}
+            </dd>
+          </div>
+        </dl>
+      </b-card>
+    </b-col>
+    <b-col order="2"
+           order-md="3"
+           class="mt-4">
+      <b-tabs v-model="tabs_model">
         <b-tab title="Motivation" href="#motivation" id="motivation">
           <b-container>
             <b-form-row>
@@ -92,8 +103,11 @@
                 </p>
               </b-col>
               <b-col class="mt-4"
-                     order="4"
-                     style="background-color: #f0f; min-height: 250px;">
+                     order="4">
+                <img v-lazy="images.motivation.src"
+                     :data-srcset="images.motivation.srcSet"
+                     :data-loading="images.motivation.placeholder"
+                     width="100%">
               </b-col>
             </b-form-row>
           </b-container>
@@ -109,7 +123,11 @@
           Eine STIMMIG macht alles gleichermaßen gut:
                 </p>
               </b-col>
-              <b-col cols="12" md="6" style="background-color: #f0f; min-height: 250px;">
+              <b-col cols="12" md="6">
+                <img v-lazy="images.technik.src"
+                     :data-srcset="images.technik.srcSet"
+                     :data-loading="images.technik.placeholder"
+                     width="100%">
               </b-col>
               <b-col cols="12">
                 <b-card-group deck>
@@ -149,7 +167,8 @@
         <b-tab title="Herstellung" href="#herstellung" id="herstellung">
           <b-container>
             <b-form-row>
-              <b-col>
+              <b-col sm="12"
+                     md="6">
                 <p>
                 STIMMIG Lautsprecher werden komplett in Deutschland in Handarbeit gefertigt.
                 </p>
@@ -160,7 +179,11 @@
                 Die Verstärkermodule der Firma ABACUS werden ebenfalls in Handarbeit hergestellt.
                 </p>
               </b-col>
-              <b-col style="background-color: #f0f;">
+              <b-col>
+                <img v-lazy="images.herstellung.src"
+                     :data-srcset="images.herstellung.srcSet"
+                     :data-loading="images.herstellung.placeholder"
+                     width="100%">
               </b-col>
             </b-form-row>
           </b-container>
@@ -171,14 +194,71 @@
   </b-row>
 </template>
 <script>
-import StHeader from '~/components/Header'
+import ProductViewer from '~/components/product-viewer'
 
 export default {
   layout: 'product',
-  components: { StHeader },
+  components: { ProductViewer },
   mounted() {
     const hash = location.hash;
     $(`.nav-tabs a[href="${hash}"]`).addClass('active');
+  },
+  computed: {
+    tabs_model: {
+      get() { return this.tabs.indexOf(this.$route.hash) },
+      set(val) {
+        this.active_tab = val;
+        this.$router.replace(this.tabs[val]);
+      }
+    }
+  },
+  data() {
+    return {
+      tabs: [ '#motivation', '#technik', '#herstellung' ],
+      images: {
+        motivation: require('~/assets/images/products/heim_l/STIMMIG_Home_L_4er.jpg'),
+        technik: require('~/assets/images/Trifon_Backplate_01.jpg'),
+        herstellung: require('~/assets/images/Trifon_Produktion.jpg')
+      },
+      product: {
+        name: 'Stimmig Heim L',
+        specifications: [
+          { key: 'Tieftöner',
+            value: '12 Zoll'
+          },
+          { key: 'Hochtöner',
+            value: '1 Zoll Kompressionstreiber'
+          },
+          { key: 'Übernahmefrequenz',
+            value: '1 kHz'
+          },
+          { key: 'Abstrahlcharakteristik',
+            value: '90° x 60°'
+          },
+          { key: 'Frequenzumfang',
+            value: '22 Hz - 20 kHz'
+          },
+          { key: 'Verstärkerleistung',
+            value: '300W / 100W RMS'
+          },
+          { key: 'Max SPL > 80 Hz',
+            value: '125 dB'
+          },
+          { key: 'Höhe',
+            value: '110 cm'
+          },
+          { key: 'Breite',
+            value: '38 cm'
+          },
+          { key: 'Tiefe',
+            value: '35 cm'
+          },
+          { key: 'Gewicht',
+            value: '46 kg'
+          }
+        ]
+      }
+    }
   }
 }
 </script>

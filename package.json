@@ -26,6 +26,8 @@
     "responsive-loader": "^1.1.0",
     "sass-loader": "^7.1.0",
     "sharp": "^0.21.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "vue-lazyload": "1.2.6",
     "webpack": "^4.20.2"
   },

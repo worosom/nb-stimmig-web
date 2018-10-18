@@ -22,8 +22,11 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', type: 'text/css', href: 'https://use.fontawesome.com/releases/v5.0.10/css/all.css' },
       { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700' },
-      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Oswald:200,300,400,700' }
-    ]
+      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css?family=Oswald:200,300,400,700' },
+    ],
+		script: [
+			{ src: 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js' }
+		]
   },
   /*
    ** Customize the progress-bar color
