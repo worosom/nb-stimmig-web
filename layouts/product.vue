@@ -1,7 +1,7 @@
 <template>
   <div class="main_wrap default">
     <nav-bar/>
-    <section class="pt-4">
+    <section class="pt-2">
       <b-container>
         <nuxt/>
       </b-container>

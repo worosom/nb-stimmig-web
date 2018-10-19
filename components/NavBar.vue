@@ -1,6 +1,7 @@
 <style>
 .dropdown-item.disabled {
 	color: #c5c5c5;
+	font-weight: 300;
 }
 </style>
 <template>

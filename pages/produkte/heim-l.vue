@@ -23,7 +23,13 @@
 }
 </style>
 <template>
-  <b-row class="pt-4">
+  <b-row>
+		<b-col class="pb-2 d-md-none">
+			<h1 class="display-4">{{product.name}}</h1>
+			<h5>
+        2 Wege Aktivlautsprecher<br>mit 12 Zoll Constant Directivity Waveguide
+			</h5>
+		</b-col>
     <b-col cols="12"
            md="6"
            order="1"
@@ -39,8 +45,10 @@
            order-md="1"
            >
       <b-card>
-        <h1 slot="header">STIMMIG Heim L</h1>
-        2 Wege Aktivlautsprecher<br>mit 12 Zoll Constant Directivity Waveguide
+				<div slot="header" class="d-none d-md-block">
+					<h1>STIMMIG Heim L</h1>
+					<h5>2 Wege Aktivlautsprecher<br>mit 12 Zoll Constant Directivity Waveguide</h5>
+				</div>
         <dl>
           <div v-for="(item, key) in product.specifications" :key="key">
             <dt>

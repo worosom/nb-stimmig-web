@@ -1,12 +1,16 @@
 <style scoped lang="scss">
 .header_wrap {
-  max-height: 100vh;
+	@media (min-width: 768px) {
+		max-height: 100vh;
+	}
 }
 .catchphrase_container {
   display: grid;
   align-content: center;
-  padding-bottom: 33%;
-  margin-bottom: 4rem;
+	@media (min-width: 768px) {
+		padding-bottom: 33%;
+		margin-bottom: 4rem;
+	}
 }
 img {
   width: 100%;
@@ -22,9 +26,8 @@ img {
       <h2>Keule macht laut.</h2>
     </b-col>
     <b-col cols="12"
-           md="6"
-           v-lazy-container="{ selector: 'img' }">
-      <img :data-src="headerSrc" :data-srcset="headerSrcSet" :data-loading="loadingHeaderSrc">
+           md="6">
+      <img v-lazy="headerSrc" :data-srcset="headerSrcSet" :data-loading="loadingHeaderSrc">
     </b-col>
   </b-row>
 </template>
