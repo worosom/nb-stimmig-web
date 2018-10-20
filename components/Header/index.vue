@@ -1,19 +1,18 @@
 <style scoped lang="scss">
 .header_wrap {
 	@media (min-width: 768px) {
-		max-height: 100vh;
+		max-height: calc( 100vh - 100px );
 	}
 }
 .catchphrase_container {
   display: grid;
   align-content: center;
 	@media (min-width: 768px) {
-		padding-bottom: 33%;
-		margin-bottom: 4rem;
+    transform: translateY(-30%);
 	}
 }
 img {
-  width: 100%;
+  height: 100%;
   z-index: -1;
 }
 </style>

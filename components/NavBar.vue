@@ -1,7 +1,15 @@
 <style>
+.navbar {
+  z-index: 10;
+  background-color: var( --white );
+}
+
 .dropdown-item.disabled {
 	color: #c5c5c5;
 	font-weight: 300;
+}
+.navbar-brand {
+  font-family: Oswald;
 }
 </style>
 <template>

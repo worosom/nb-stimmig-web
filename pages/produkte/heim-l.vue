@@ -12,14 +12,23 @@
 }
 .tab-pane {
   padding-top: 1.5rem;
+  min-height: 100vh;
 }
 
-.spinner {
-  overflow: hidden;
-  min-height: 70vh;
-  @media ( min-width: 768px ) {
-    min-height: unset;
-  }
+.product_specifications {
+	width: 100%;
+	tr {
+		transition: color 200ms ease;
+		&:hover {
+			color: var(--info);
+		}
+	}
+	td {
+		hyphens: auto;
+		strong {
+			hyphens: none;
+		}
+	}
 }
 </style>
 <template>
@@ -45,20 +54,22 @@
            order-md="1"
            >
       <b-card>
-				<div slot="header" class="d-none d-md-block">
+				<div slot="header" class="">
 					<h1>STIMMIG Heim L</h1>
 					<h5>2 Wege Aktivlautsprecher<br>mit 12 Zoll Constant Directivity Waveguide</h5>
 				</div>
-        <dl>
-          <div v-for="(item, key) in product.specifications" :key="key">
-            <dt>
+        <table class="product_specifications">
+          <tr v-for="(item, key) in product.specifications" :key="key">
+            <td class="d-md-block d-lg-table-cell pr-1 py-2 pb-md-0 py-lg-2">
+              <strong class="mr-2">
               {{item.key}}:
-            </dt>
-            <dd>
+              </strong>
+            </td>
+            <td class="d-md-block d-lg-table-cell pl-1 py-2 pt-md-0 py-lg-2">
               {{item.value}}
-            </dd>
-          </div>
-        </dl>
+            </td>
+          </tr>
+        </table>
       </b-card>
     </b-col>
     <b-col order="2"
@@ -70,7 +81,8 @@
             <b-form-row>
               <b-col cols="12"
                      md="6"
-                     lg="4">
+                     lg="4"
+                     class="px-1 pr-md-3">
                 <p class="card-text">
           Die Entwicklung der STIMMIG Lautsprecher begann im Jahr 2002 als privates Projekt. Design-Ziel war es, einen Lautsprecher ohne Kompromisse zu entwickeln, der dennoch ausgesprochen wohnraumfreundlich sein würde.
                 </p>
@@ -86,7 +98,8 @@
                      lg="4"
                      order-sm="2"
                      order-md="3"
-                     order-lg="2">
+                     order-lg="2"
+                     class="px-1 pr-md-3 pl-lg-3">
                 <p class="card-text">
           Da die verwendeten Konzepte - Constant Directivity und Hoher Wirkungsgrad - beide möglichst große Treiber voraussetzen, galt es, ein Gehäuse  zu entwerfen, welches die eigentliche Größe des Lautsprechers verstecken würde.
                 </p>
@@ -99,7 +112,8 @@
                      lg="4"
                      order-sm="2"
                      order-md="2"
-                     order-lg="3">
+                     order-lg="3"
+                     class="px-1 pl-md-3">
                 <p class="card-text">
           Die Gestaltung ist mit dem schwarzen Glanz der aus Kunststein hergestellten Waveguide- und Schallwand-Einheit sowie dem Echtholzfurnier wieder an einen klassischen Flügel angelehnt.
                 </p>
@@ -110,7 +124,7 @@
           Akustisch sieht es genau so aus!
                 </p>
               </b-col>
-              <b-col class="mt-4"
+              <b-col class="mt-4 px-1 pl-md-3 pl-lg-1"
                      order="4">
                 <img v-lazy="images.motivation.src"
                      :data-srcset="images.motivation.srcSet"
@@ -123,7 +137,7 @@
         <b-tab title="Technik" href="#technik" id="technik">
           <b-container>
             <b-form-row>
-              <b-col>
+              <b-col class="pr-md-3">
                 <p>
           Ziel bei der Entwicklung der STIMMIG Lautsprecher ist stets, alle Aspekte gleichermaßen auf das höchstmögliche Niveau zu heben. Dieses ist gewissenhaft auszuloten, um sicherzustellen, dass nicht das “Überzüchten” einer bestimmten Eigenschaft dazu führt, dass andere Eigenschaften ins Hintertreffen geraten.
                 </p>
@@ -131,11 +145,17 @@
           Eine STIMMIG macht alles gleichermaßen gut:
                 </p>
               </b-col>
-              <b-col cols="12" md="6">
+              <b-col cols="12" md="6"
+                     class="pl-md-3">
                 <img v-lazy="images.technik.src"
                      :data-srcset="images.technik.srcSet"
                      :data-loading="images.technik.placeholder"
                      width="100%">
+                <p>
+                <i>
+          Als Antriebselektronik kommen bei STIMMIG Verstärkermodule der Firma ABACUS zum EInsatz, die mit ihrer Dolifet-Technologie idealer Spielpartner für die verwendeten Treiber sind.
+                </i>
+                </p>
               </b-col>
               <b-col cols="12">
                 <b-card-group deck>
@@ -165,9 +185,6 @@
                     </p>
                   </b-card>
                 </b-card-group>
-                <p>
-          Als Antriebselektronik kommen bei STIMMIG Verstärkermodule der Firma ABACUS zum EInsatz, die mit ihrer Dolifet-Technologie idealer Spielpartner für die verwendeten Treiber sind.
-                </p>
               </b-col>
             </b-form-row>
           </b-container>
@@ -176,7 +193,8 @@
           <b-container>
             <b-form-row>
               <b-col sm="12"
-                     md="6">
+                     md="6"
+                     class="pr-md-3">
                 <p>
                 STIMMIG Lautsprecher werden komplett in Deutschland in Handarbeit gefertigt.
                 </p>
@@ -187,7 +205,7 @@
                 Die Verstärkermodule der Firma ABACUS werden ebenfalls in Handarbeit hergestellt.
                 </p>
               </b-col>
-              <b-col>
+              <b-col class="pl-md-3">
                 <img v-lazy="images.herstellung.src"
                      :data-srcset="images.herstellung.srcSet"
                      :data-loading="images.herstellung.placeholder"
@@ -206,6 +224,7 @@ import ProductViewer from '~/components/product-viewer'
 
 export default {
   layout: 'product',
+	transition: 'page',
   components: { ProductViewer },
   mounted() {
     const hash = location.hash;
@@ -247,7 +266,7 @@ export default {
             value: '22 Hz - 20 kHz'
           },
           { key: 'Verstärkerleistung',
-            value: '300W / 100W RMS'
+            value: '300 W / 100 W RMS'
           },
           { key: 'Max SPL > 80 Hz',
             value: '125 dB'
