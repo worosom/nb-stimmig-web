@@ -40,7 +40,7 @@
            >
       <b-card>
 				<div slot="header" class="">
-					<h1>STIMMIG Heim L</h1>
+          <h1>{{product.name}}</h1>
 					<h5>2 Wege Aktivlautsprecher<br>mit 12 Zoll Constant Directivity Waveguide</h5>
 				</div>
         <table class="product_specifications">
@@ -84,7 +84,7 @@ export default {
     return {
       tabs: [ '#motivation', '#technik', '#herstellung' ],
       product: {
-        name: 'Stimmig Heim L',
+        name: 'Heim L',
         specifications: [
           { key: 'Tieftöner',
             value: '12 Zoll'

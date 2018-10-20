@@ -31,15 +31,15 @@ export default {
       info: {
         motivation: {
           text: `Constant Directivity als Problemlöser`,
-          link: '/produkte/heim-l#motivation'
+          link: '/motivation'
         },
         technik: {
           text: `Ziel der Entwicklung ist stets, alle Aspekte gleichermaßen auf das höchstmögliche Niveau zu heben.`,
-          link: '/produkte/heim-l#technik'
+          link: '/technik'
         },
         herstellung: {
           text: `STIMMIG Lautsprecher werden komplett in Deutschland in Handarbeit gefertigt.`,
-          link: '/produkte/heim-l#herstellung'
+          link: '/herstellung'
         }
 
       }
