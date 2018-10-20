@@ -17,6 +17,7 @@
 
 .product_specifications {
 	width: 100%;
+	margin-top: 2rem;
 	tr {
 		transition: color 200ms ease;
 		&:hover {
@@ -60,12 +61,12 @@
 				</div>
         <table class="product_specifications">
           <tr v-for="(item, key) in product.specifications" :key="key">
-            <td class="d-md-block d-lg-table-cell pr-1 py-2 pb-md-0 py-lg-2">
+            <td class="d-md-block d-lg-table-cell pr-1 py-1 pb-md-0 py-lg-1">
               <strong class="mr-2">
               {{item.key}}:
               </strong>
             </td>
-            <td class="d-md-block d-lg-table-cell pl-1 py-2 pt-md-0 py-lg-2">
+            <td class="d-md-block d-lg-table-cell pl-1 py-1 pt-md-0 py-lg-1">
               {{item.value}}
             </td>
           </tr>

@@ -33,6 +33,15 @@
 					<b-dropdown-item disabled>Club L</b-dropdown-item>
 					<b-dropdown-item disabled>Sub Zero</b-dropdown-item>
 				</b-nav-item-dropdown>
+				<b-nav-item
+					to="/produkte/heim-l/#motivation"
+				>Motivation</b-nav-item>
+				<b-nav-item
+					to="/produkte/heim-l/#technik"
+				>Technik</b-nav-item>
+				<b-nav-item
+					to="/produkte/heim-l/#herstellung"
+				>Herstellung</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

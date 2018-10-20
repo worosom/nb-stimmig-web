@@ -100,8 +100,8 @@ const numImages = 36;
 const baseClass = "slider_image";
 
 const initialVelocity = 0.0104;
-const draggingResistance = .9;
-const freeResistance = .99;
+const draggingResistance = .4;
+const freeResistance = .97;
 
 export default {
   data() {
