@@ -24,13 +24,13 @@ import InfoNugget from '~/components/info-nugget'
 
 export default {
   components: { Products, InfoNugget },
-	transition: 'page',
   layout: 'landing',
   data() {
     return {
       info: {
         motivation: {
-          text: `Constant Directivity als Problemlöser`,
+          text: `
+          Die Entwicklung der STIMMIG Lautsprecher begann im Jahr 2002 als privates Projekt.`,
           link: '/motivation'
         },
         technik: {

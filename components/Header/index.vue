@@ -1,15 +1,15 @@
 <style scoped lang="scss">
 .header_wrap {
-	@media (min-width: 768px) {
-		max-height: calc( 100vh - 100px );
-	}
+  @media (min-width: 768px) {
+    max-height: calc( 100vh - 100px );
+  }
 }
 .catchphrase_container {
   display: grid;
   align-content: center;
-	@media (min-width: 768px) {
+  @media (min-width: 768px) {
     transform: translateY(-30%);
-	}
+  }
 }
 img {
   height: 100%;
@@ -22,7 +22,7 @@ img {
            md="6"
            class="catchphrase_container">
       <h1>Stimmig Heim L</h1>
-      <h2>Keule macht laut.</h2>
+      <h2>Constant Directivity als Problemlöser.</h2>
     </b-col>
     <b-col cols="12"
            md="6">

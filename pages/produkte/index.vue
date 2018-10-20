@@ -1,5 +1,7 @@
 <script>
 import Product from '~/pages/produkte/_slug/index.vue'
 
-export default Product;
+export default {
+  ...Product
+};
 </script>

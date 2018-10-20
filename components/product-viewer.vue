@@ -6,6 +6,8 @@
   overflow: hidden;
   @media (min-width: 768px) {
     min-height: calc( 100vh - 70px );
+    position: sticky;
+    top: 0;
   }
 }
 
@@ -16,18 +18,19 @@
   width: 100%;
   height: 100%;
   display: grid;
-	position: relative;
+  position: relative;
   &_image {
     display: block;
-		position: absolute;
-		top: 0;
-		left: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
     transform: translate3d(-50%, 0, 0);
-		height: 100%;
-	}
+    height: 100%;
+    max-height: calc( 100vh - 70px );
+  }
   &_image--hidden {
     visibility: hidden;
-	}
+  }
 }
 
 .slider_cta {
@@ -39,6 +42,7 @@
   transform: translate3d(-50%, 0, 0);
   opacity: 0;
   transition: opacity 200ms ease;
+  z-index: 1;
 }
 
 .slider_cta_visible {
@@ -79,7 +83,7 @@
 </style>
 
 <template>
-	<div @mouseup="endSlide()"
+  <div @mouseup="endSlide()"
        class="slider_wrap">
     <i :class="'slider_cta fas fa-arrows-alt-h ' + cta_visible"
         @mousedown="(e) => e.which === 1 ? slide() : null"></i>
@@ -95,10 +99,10 @@
           v-lazy="images_src[key]"
           :data-srcset="image.srcSet"
           :data-loading="image.placeholder"
-					sizes="100vw"
+          sizes="100vw"
           >
     </div>
-	</div>
+  </div>
 </template>
 
 <script>

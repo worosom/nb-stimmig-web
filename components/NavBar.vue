@@ -22,7 +22,7 @@
       is-nav>
       <b-navbar-nav>
 				<b-nav-item
-					to="/produkte"
+					to="/produkte/heim-l"
 				>Produkte</b-nav-item>
 				<b-nav-item
 					to="/motivation"
@@ -34,7 +34,7 @@
 					to="/herstellung"
 				>Herstellung</b-nav-item>
         <b-nav-item
-          href="#footer"
+          to="#footer"
           v-scroll-to="'#footer'"
         >{{$t('impressum.title')}}</b-nav-item>
       </b-navbar-nav>
