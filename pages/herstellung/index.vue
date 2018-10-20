@@ -4,6 +4,7 @@
       <b-col sm="12"
              md="6"
              class="pr-md-3">
+        <h1>Herstellung</h1>
         <p>
         STIMMIG Lautsprecher werden komplett in Deutschland in Handarbeit gefertigt.
         </p>

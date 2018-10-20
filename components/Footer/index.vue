@@ -2,6 +2,13 @@
 #footer {
   position: absolute;
   width: 100%;
+  height: 21rem;
+  @media (min-width: 768px) {
+    height: 18rem;
+  }
+  @media (min-width: 992px) {
+    height: 15rem;
+  }
   bottom: 0;
   h4 {
     margin: 0;

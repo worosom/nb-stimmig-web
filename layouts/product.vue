@@ -1,4 +1,9 @@
 <style lang="scss">
+@media (min-width: 768px ) {
+  .tabs>.col-auto {
+      margin-left: 94px;
+  }
+}
 .nav-tabs {
   border-width: 1px;
   border-right: 1px solid #dee2e6;
@@ -8,38 +13,35 @@
     margin-right: -1px;
   }
   .nav-link.disabled {
-    color: #c5c5c5;
+    color: #dfdfdf;
     font-weight: 300;
+    cursor: default;
   }
 
   .container .col {
     hyphens: auto;
   }
 }
-.tab-pane {
-  padding-top: 1.5rem;
-  min-height: 100vh;
-}
 </style>
 <template>
   <div class="main_wrap default">
     <nav-bar/>
     <section class="pt-2">
-      <b-container>
-        <b-tabs vertical>
-          <b-tab title="Heim L">
+      <b-tabs vertical>
+        <b-container>
+          <b-tab title="Heim L" href="/produkte/heim-l">
             <nuxt/>
           </b-tab>
-          <b-tab title="Cinema L" disabled>
+          <b-tab title="Heim M" disabled>
           </b-tab>
-          <b-tab title="Studio L" disabled>
+          <b-tab title="Studio M" disabled>
           </b-tab>
           <b-tab title="Club L" disabled>
           </b-tab>
-          <b-tab title="Sub Zero L" disabled>
+          <b-tab title="Heim Bass L" disabled>
           </b-tab>
-        </b-tabs>
-      </b-container>
+        </b-container>
+      </b-tabs>
     </section>
     <s-footer/>
   </div>
