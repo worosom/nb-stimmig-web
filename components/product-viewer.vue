@@ -1,70 +1,78 @@
-<style lang="stylus">
-.slider_wrap
+<style lang="scss">
+.slider_wrap {
   min-height: calc( 100vh - 215px );
-  width: 100%
-  height: 100%
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   @media (min-width: 768px) {
     min-height: calc( 100vh - 70px );
   }
+}
 
-.slider
-  padding: 0
-  margin: 0
-  touch-action: none
-  width: 100%
-  height: 100%
-  display: grid
-  &_image
-    display: block
-    grid-column: 1/2
-    grid-row: 1/2
-    background-size: contain
-    background-position: center center
-    background-repeat: no-repeat
-  &_image--hidden
-    visibility: hidden
+.slider {
+  padding: 0;
+  margin: 0;
+  touch-action: none;
+  width: 100%;
+  height: 100%;
+  display: grid;
+	position: relative;
+  &_image {
+    display: block;
+		position: absolute;
+		top: 0;
+		left: 50%;
+    transform: translate3d(-50%, 0, 0);
+		height: 100%;
+	}
+  &_image--hidden {
+    visibility: hidden;
+	}
+}
 
-.slider_cta
-  font-size: 5rem
-  position: absolute
-  left: 50%
-  top: -1rem;
-  color: rgba(200, 200, 200, .7)
-  transform: translate3d(-50%, 0, 0)
-  opacity: 0
-  transition: opacity 200ms ease
+.slider_cta {
+  font-size: 5rem;
+  position: absolute;
+  left: 50%;
+  top: -1rem;;
+  color: rgba(200, 200, 200, .7);
+  transform: translate3d(-50%, 0, 0);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
 
-.slider_cta_visible
-  opacity: 1
-  animation: pulse 5s linear normal infinite
+.slider_cta_visible {
+  opacity: 1;
+  animation: pulse 5s linear normal infinite;
+}
 
 @keyframes pulse {
   0% {
-    color: rgba(200, 200, 200, .7)
+    color: rgba(200, 200, 200, .7);
   }
   6.25% {
-    color: rgba(200, 200, 200, 1)
+    color: rgba(200, 200, 200, 1);
   }
   12.5% {
-    color: rgba(200, 200, 200, .7)
+    color: rgba(200, 200, 200, .7);
   }
   25% {
-    color: rgba(200, 200, 200, 1)
+    color: rgba(200, 200, 200, 1);
   }
   31.25% {
-    color: rgba(200, 200, 200, .7)
+    color: rgba(200, 200, 200, .7);
   }
   37.5% {
-    color: rgba(200, 200, 200, 1)
+    color: rgba(200, 200, 200, 1);
   }
   43.75% {
-    color: rgba(200, 200, 200, .7)
+    color: rgba(200, 200, 200, .7);
   }
   50% {
-    color: rgba(200, 200, 200, .7)
+    color: rgba(200, 200, 200, .7);
   }
   100% {
-    color: rgba(200, 200, 200, .7)
+    color: rgba(200, 200, 200, .7);
   }
 }
 
@@ -75,21 +83,21 @@
        class="slider_wrap">
     <i :class="'slider_cta fas fa-arrows-alt-h ' + cta_visible"
         @mousedown="(e) => e.which === 1 ? slide() : null"></i>
-    <ul
+    <div
         class="slider"
         @mousedown="(e) => e.which === 1 ? slide() : null"
         >
       <!-- Animation Frames -->
-      <li
+      <img
           v-for="(image, key) in images"
           :key="key"
           :class="slider_image_class(key)"
-          v-lazy:background-image.container="image.src"
-          :data-src-set="image.srcSet"
+          v-lazy="images_src[key]"
+          :data-srcset="image.srcSet"
           :data-loading="image.placeholder"
+					sizes="100vw"
           >
-      </li>
-    </ul>
+    </div>
 	</div>
 </template>
 
@@ -99,17 +107,21 @@ const passive = {passive: true};
 const numImages = 36;
 const baseClass = "slider_image";
 
-const initialVelocity = 0.0104;
+const initialVelocity = 0;
 const draggingResistance = .4;
 const freeResistance = .97;
 
 export default {
   data() {
+    const _images_fallback = [];
+    for (let i = 0; i < numImages; i++)
+      _images_fallback.push(require('~/assets/images/products/heim_l/360/'+i+'.jpg?size=2048'));
     const _images = [];
     for (let i = 0; i < numImages; i++)
       _images.push(require('~/assets/images/products/heim_l/360/'+i+'.jpg'));
     return {
       images: _images,
+      images_src: _images_fallback,
       sliding: false,
       animating: false,
       progress: 0,

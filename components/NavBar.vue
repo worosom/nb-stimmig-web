@@ -4,10 +4,6 @@
   background-color: var( --white );
 }
 
-.dropdown-item.disabled {
-	color: #c5c5c5;
-	font-weight: 300;
-}
 .navbar-brand {
   font-family: Oswald;
 }
@@ -24,33 +20,28 @@
     <b-collapse
       id="nav_collapse"
       is-nav>
-
       <b-navbar-nav>
-				<b-nav-item-dropdown :text="$t('produkte.title')" right>
-					<b-dropdown-item nuxt link to="/produkte/heim-l/">Heim L</b-dropdown-item>
-					<b-dropdown-item disabled>Studio l</b-dropdown-item>
-					<b-dropdown-item disabled>Cinema L</b-dropdown-item>
-					<b-dropdown-item disabled>Club L</b-dropdown-item>
-					<b-dropdown-item disabled>Sub Zero</b-dropdown-item>
-				</b-nav-item-dropdown>
 				<b-nav-item
-					to="/produkte/heim-l/#motivation"
+					to="/produkte"
+				>Produkte</b-nav-item>
+				<b-nav-item
+					to="/motivation"
 				>Motivation</b-nav-item>
 				<b-nav-item
-					to="/produkte/heim-l/#technik"
+					to="/technik"
 				>Technik</b-nav-item>
 				<b-nav-item
-					to="/produkte/heim-l/#herstellung"
+					to="/herstellung"
 				>Herstellung</b-nav-item>
-      </b-navbar-nav>
-
-      <!-- Right aligned nav items -->
-      <b-navbar-nav class="ml-auto">
         <b-nav-item
           href="#footer"
-					v-scroll-to="'#footer'"
+          v-scroll-to="'#footer'"
         >{{$t('impressum.title')}}</b-nav-item>
       </b-navbar-nav>
+
+      <!-- Right aligned nav items
+      <b-navbar-nav class="ml-auto">
+      </b-navbar-nav> -->
 
     </b-collapse>
   </b-navbar>

@@ -2,6 +2,9 @@
 #footer {
   position: absolute;
   width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
   h4 {
     margin: 0;
   }

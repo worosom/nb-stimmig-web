@@ -4,6 +4,15 @@
  */
 @import "_bootstrap-theme";
 
+body {
+  height: 100%;
+  padding-bottom: 15rem;
+  bottom: 0;
+}
+
+.main_wrap {
+}
+
 .card-deck {
   flex-flow: column;
   @media (min-width: 992px) {
@@ -17,7 +26,7 @@
 }
 
 .page-enter-active, .page-leave-active {
-  transition: opacity .5s
+  transition: opacity .2s
 }
 .page-enter, .page-leave-active {
   opacity: 0

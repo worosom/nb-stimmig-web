@@ -25,6 +25,7 @@ import InfoNugget from '~/components/info-nugget'
 export default {
   components: { Products, InfoNugget },
 	transition: 'page',
+  layout: 'landing',
   data() {
     return {
       info: {
