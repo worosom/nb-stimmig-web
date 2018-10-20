@@ -13,6 +13,7 @@
 }
 img {
   height: 100%;
+  max-height: calc( 100vh - 14rem );
   z-index: -1;
 }
 </style>
