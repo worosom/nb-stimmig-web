@@ -4,9 +4,6 @@ const webpack = require("webpack");
 
 module.exports = {
   mode: 'universal',
-  router: {
-    base: '/nb-stimmig-web/'
-  },
 
   /*
    ** Headers of the page
