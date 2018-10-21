@@ -43,7 +43,7 @@
     </b-container>
     <section class="pt-2">
       <b-container>
-        <b-tabs v-model="tabs_model" class="d-lg-none">
+        <b-tabs v-model="tabs_model" class="d-md-none">
           <b-tab title="Heim L" href="/produkte/heim-l">
             <nuxt/>
           </b-tab>
@@ -56,7 +56,7 @@
           <b-tab title="Heim Bass L" disabled>
           </b-tab>
         </b-tabs>
-        <b-tabs v-model="tabs_model" class="d-none d-lg-flex" vertical>
+        <b-tabs v-model="tabs_model" class="d-none d-md-flex" vertical>
           <b-tab title="Heim L" href="/produkte/heim-l">
             <nuxt/>
           </b-tab>
