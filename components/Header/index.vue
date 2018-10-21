@@ -10,6 +10,7 @@
   @media (min-width: 768px) {
     transform: translateY(-30%);
   }
+  padding-left: 2rem;
 }
 .header_image {
   height: 100%;

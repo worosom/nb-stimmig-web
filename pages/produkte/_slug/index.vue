@@ -1,6 +1,7 @@
 <style scoped lang="scss">
 .card-header {
   background-color: var(--white);
+  padding-top: 0;
 }
 
 .product_specifications {
@@ -23,9 +24,9 @@
 <template>
   <b-row>
     <b-col class="pb-2 d-md-none">
-      <h1 class="display-4">{{product.name}}</h1>
+      <h1>{{product.name}}</h1>
       <h5>
-        2 Wege Aktivlautsprecher<br>mit 12 Zoll Constant Directivity Waveguide
+        2 Wege Aktivlautsprecher
       </h5>
     </b-col>
     <b-col cols="12"
@@ -44,8 +45,8 @@
            >
       <b-card>
         <div slot="header" class="">
-          <h1 class="display-2">{{product.name}}</h1>
-          <h5>2 Wege Aktivlautsprecher<br>mit 12 Zoll Constant Directivity Waveguide</h5>
+          <h1>{{product.name}}</h1>
+          <h5>2 Wege Aktivlautsprecher</h5>
         </div>
         <table class="product_specifications">
           <tbody>
@@ -90,7 +91,7 @@ export default {
             value: '12 Zoll'
           },
           { key: 'Hochtöner',
-            value: '1 Zoll Kompressionstreiber'
+            value: '12 Zoll Constant Directivity Waveguide mit 1 Zoll Kompressionstreiber'
           },
           { key: 'Übernahmefrequenz',
             value: '1 kHz'

@@ -10,6 +10,7 @@
     height: 15rem;
   }
   bottom: 0;
+  left: 0;
   h4 {
     margin: 0;
   }

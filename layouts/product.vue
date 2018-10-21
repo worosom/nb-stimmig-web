@@ -1,5 +1,14 @@
 <style lang="scss">
 @media (min-width: 768px ) {
+  .main_wrap.product {
+    margin-left: -310px;
+    nav {
+      margin-left: 155px;
+    }
+  }
+  .tabs>.col-auto {
+    width: 155px;
+  }
   .nav-tabs {
     border-width: 1px;
     border-right: 1px solid #dee2e6;
@@ -21,13 +30,20 @@
     hyphens: auto;
   }
 }
+
 </style>
 <template>
-  <div class="main_wrap default">
-    <nav-bar/>
+  <div class="main_wrap product">
+    <b-container>
+      <b-row>
+        <b-col>
+          <nav-bar/>
+        </b-col>
+      </b-row>
+    </b-container>
     <section class="pt-2">
-      <b-tabs v-model="tabs_model" class="d-md-none">
-        <b-container fluid>
+      <b-container>
+        <b-tabs v-model="tabs_model" class="d-lg-none">
           <b-tab title="Heim L" href="/produkte/heim-l">
             <nuxt/>
           </b-tab>
@@ -39,10 +55,8 @@
           </b-tab>
           <b-tab title="Heim Bass L" disabled>
           </b-tab>
-        </b-container>
-      </b-tabs>
-      <b-tabs v-model="tabs_model" class="d-none d-md-flex" vertical>
-        <b-container>
+        </b-tabs>
+        <b-tabs v-model="tabs_model" class="d-none d-lg-flex" vertical>
           <b-tab title="Heim L" href="/produkte/heim-l">
             <nuxt/>
           </b-tab>
@@ -54,8 +68,8 @@
           </b-tab>
           <b-tab title="Heim Bass L" disabled>
           </b-tab>
-        </b-container>
-      </b-tabs>
+        </b-tabs>
+      </b-container>
     </section>
     <s-footer/>
   </div>
