@@ -29,7 +29,7 @@
         <b-card-group deck>
           <b-card title="Dynamik/Auflösung">
             <p class="card-text">
-            Sie kann ebenso die feinsten Strukturen eines klassischen Pianissimo flüsterleise auflösen, als auch ein Rockkonzert in Originallautstärke von über 120 dB mit sensationell geringen Verzerrungen wiedergeben. Diese aufregende Dynamik funktioniert natürlich auch im Heimkino hervorragend!
+            Sie kann ebenso die feinsten Strukturen eines klassischen Pianissimo flüsterleise auflösen, als auch ein Rockkonzert in Originallautstärke von über 120 dB mit sensationell geringen Verzerrungen wiedergeben.
             </p>
             <p class="card-text">
             Diese aufregende Dynamik funktioniert natürlich auch im Heimkino hervorragend!
