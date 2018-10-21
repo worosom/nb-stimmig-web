@@ -11,10 +11,15 @@
     transform: translateY(-30%);
   }
 }
-img {
+.header_image {
   height: 100%;
   max-height: calc( 100vh - 14rem );
+  @media (min-width: 768px) {
+    max-height: calc( 100vh - 4rem );
+  }
   z-index: -1;
+  margin-left: 50%;
+  transform: translate3d(-50%, 0, 0);
 }
 </style>
 <template>
@@ -27,7 +32,10 @@ img {
     </b-col>
     <b-col cols="12"
            md="6">
-      <img v-lazy="headerSrc" :data-srcset="headerSrcSet" :data-loading="loadingHeaderSrc">
+      <img v-lazy="headerSrc"
+           :data-srcset="headerSrcSet"
+           :data-loading="loadingHeaderSrc"
+           class="header_image">
     </b-col>
   </b-row>
 </template>

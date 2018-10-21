@@ -30,7 +30,7 @@
     <nav-bar/>
     <section class="pt-2">
       <b-tabs v-model="tabs_model" class="d-md-none">
-        <b-container>
+        <b-container fluid>
           <b-tab title="Heim L" href="/produkte/heim-l">
             <nuxt/>
           </b-tab>

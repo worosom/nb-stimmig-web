@@ -1,14 +1,9 @@
 <style lang="scss">
 .slider_wrap {
+  overflow: hidden;
   min-height: calc( 100vh - 215px );
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  @media (min-width: 768px) {
-    min-height: calc( 100vh - 70px );
-    position: sticky;
-    top: 0;
-  }
 }
 
 .slider {
@@ -26,10 +21,18 @@
     left: 50%;
     transform: translate3d(-50%, 0, 0);
     height: 100%;
-    max-height: calc( 100vh - 70px );
-  }
-  &_image--hidden {
-    visibility: hidden;
+    max-height: 100vh;
+    z-index: 0;
+		opacity: 0;
+    @media (min-width: 768px) {
+      max-height: calc( 100vh - 70px );
+    }
+    &--current {
+      z-index: 1;
+			opacity: 1;
+    }
+    &--hidden {
+    }
   }
 }
 
@@ -96,16 +99,19 @@
           v-for="(image, key) in images"
           :key="key"
           :class="slider_image_class(key)"
-          v-lazy="images_src[key]"
-          :data-srcset="image.srcSet"
+          :src="images_src[key]"
+          :srcset="image.srcSet"
+          :data-error="image.placeholder"
           :data-loading="image.placeholder"
-          sizes="100vw"
+          sizes="100vh"
           >
+      <circle-loader />
     </div>
   </div>
 </template>
 
 <script>
+import CircleLoader from '~/components/circle-loader';
 
 const passive = {passive: true};
 const numImages = 36;
@@ -116,10 +122,11 @@ const draggingResistance = .4;
 const freeResistance = .97;
 
 export default {
+  components: { CircleLoader },
   data() {
     const _images_fallback = [];
     for (let i = 0; i < numImages; i++)
-      _images_fallback.push(require('~/assets/images/products/heim_l/360/'+i+'.jpg?size=2048'));
+      _images_fallback.push(require('~/assets/images/products/heim_l/360/'+i+'.jpg?size=128'));
     const _images = [];
     for (let i = 0; i < numImages; i++)
       _images.push(require('~/assets/images/products/heim_l/360/'+i+'.jpg'));
@@ -144,10 +151,11 @@ export default {
   methods: {
     slider_image_class(key) {
       this.distance = this.selected_image - key;
-      this.visible = Math.abs(this.distance) === 0;
+      this.visible = Math.abs(this.distance) < 1;
       return `${baseClass}
       ${baseClass}_${key}
-      ${baseClass}--${this.visible ? "visible" : "hidden"}
+      ${baseClass}--${this.visible ? 'visible' : 'hidden'}
+      ${this.distance === 0 ? `${baseClass}--current` : ''}
     `;
     },
     slide(e) {
@@ -194,20 +202,19 @@ export default {
   mounted() {
     this.$el.addEventListener("mousemove", this.updateVelocity, passive);
     this.$el.addEventListener("touchstart", this.slide, passive);
-    this.$el.addEventListener("touchend", this.endSlide, passive);
-    this.$el.addEventListener("touchcancel", this.endSlide, passive);
+    this.$el.addEventListener("touchend", this.endSlide);
+    this.$el.addEventListener("touchcancel", this.endSlide);
     this.$el.addEventListener("touchmove", this.updateVelocity, passive);
     this.velocity = initialVelocity;
-    this.progress = 6/36;
     window.requestAnimationFrame(this.updateProgress);
     this.animating = true;
   },
   beforeDestroy() {
-    this.$el.removeEventListener("mousemove", this.updateVelocity, passive);
-    this.$el.removeEventListener("touchstart", this.slide, passive);
-    this.$el.removeEventListener("touchend", this.endSlide, passive);
-    this.$el.addEventListener("touchcancel", this.endSlide, passive);
-    this.$el.removeEventListener("touchmove", this.updateVelocity, passive);
+    this.$el.removeEventListener("mousemove", this.updateVelocity);
+    this.$el.removeEventListener("touchstart", this.slide);
+    this.$el.removeEventListener("touchend", this.endSlide);
+    this.$el.removeEventListener("touchcancel", this.endSlide);
+    this.$el.removeEventListener("touchmove", this.updateVelocity);
   }
 }
 </script>

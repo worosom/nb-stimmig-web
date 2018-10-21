@@ -46,10 +46,11 @@
         </p>
       </b-col>
       <b-col class="mt-4 px-1 pl-md-3 pl-lg-1"
-             order="4">
-        <img v-lazy="images.motivation.src"
-             :data-srcset="images.motivation.srcSet"
+             order="4" v-lazy-container="{ selector: 'img' }">
+        <img :data-src="images_fallback.motivation.src"
+             :srcset="images.motivation.srcSet"
              :data-loading="images.motivation.placeholder"
+             sizes="100vw"
              width="100%">
       </b-col>
     </b-form-row>
@@ -60,6 +61,9 @@ export default {
   transition: 'page',
   data() {
     return {
+      images_fallback: {
+        motivation: require('~/assets/images/products/heim_l/STIMMIG_Heim_L_4er.jpg?size=2048')
+      },
       images: {
         motivation: require('~/assets/images/products/heim_l/STIMMIG_Heim_L_4er.jpg')
       }
