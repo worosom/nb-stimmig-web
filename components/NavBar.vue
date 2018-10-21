@@ -20,7 +20,7 @@
     <b-collapse
       id="nav_collapse"
       is-nav>
-      <b-navbar-nav>
+      <b-navbar-nav class="mx-md-auto">
 				<b-nav-item
 					to="/produkte/heim-l"
 				>Produkte</b-nav-item>

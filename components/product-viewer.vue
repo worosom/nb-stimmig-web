@@ -45,7 +45,7 @@
   transform: translate3d(-50%, 0, 0);
   opacity: 0;
   transition: opacity 200ms ease;
-  z-index: 1;
+  z-index: 4;
 }
 
 .slider_cta_visible {

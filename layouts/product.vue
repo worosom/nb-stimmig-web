@@ -9,9 +9,6 @@
       margin-right: -1px;
     }
   }
-  .tabs>.col-auto {
-      margin-left: 94px;
-  }
 }
 .nav-tabs {
   .nav-link.disabled {

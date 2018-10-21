@@ -112,6 +112,10 @@ module.exports = {
   },
   generate: {
     routes: [
+      '/motivation',
+      '/technik',
+      '/herstellung',
+      '/produkte',
       '/produkte/heim-l'
     ]
   }
