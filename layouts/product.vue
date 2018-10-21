@@ -34,13 +34,7 @@
 </style>
 <template>
   <div class="main_wrap product">
-    <b-container>
-      <b-row>
-        <b-col>
-          <nav-bar/>
-        </b-col>
-      </b-row>
-    </b-container>
+    <nav-bar/>
     <section class="pt-2">
       <b-container>
         <b-tabs v-model="tabs_model" class="d-md-none">

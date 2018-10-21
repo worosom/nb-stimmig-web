@@ -1,12 +1,6 @@
 <template>
   <div class="main_wrap default">
-    <b-container>
-      <b-row>
-        <b-col>
-          <nav-bar/>
-        </b-col>
-      </b-row>
-    </b-container>
+    <nav-bar/>
     <section class="pt-2">
       <b-container class="content_container">
         <st-header/>

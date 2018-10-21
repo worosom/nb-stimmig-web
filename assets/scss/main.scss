@@ -10,6 +10,9 @@ html {
 
 #__nuxt {
   overflow-x: hidden;
+  @media (min-width: 762px) {
+    padding-left: 115px;
+  }
 }
 
 body {
