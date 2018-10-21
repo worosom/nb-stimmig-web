@@ -59,6 +59,9 @@
 <script>
 export default {
   transition: 'page',
+  head: {
+    title: 'Motivation - Stimmig Lautsprechersysteme'
+  },
   data() {
     return {
       images_fallback: {

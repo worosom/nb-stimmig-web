@@ -72,6 +72,9 @@ import ProductViewer from '~/components/product-viewer'
 export default {
   layout: 'product',
   transition: 'page',
+  head: {
+    title: 'Heim L - Stimmig Lautsprechersysteme'
+  },
   components: { ProductViewer },
   mounted() {
     const hash = location.hash;

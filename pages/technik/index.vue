@@ -60,6 +60,9 @@
 <script>
 export default {
 	transition: 'page',
+  head: {
+    title: 'Technik - Stimmig Lautsprechersysteme'
+  },
   data() {
     return {
       images: {

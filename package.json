@@ -1,7 +1,7 @@
 {
   "name": "nb-stimmig-web",
   "version": "1.0.0",
-  "description": "Website for STIMMIG",
+  "description": "Stimmig Lautsprechersysteme",
   "author": "Alexander Morosow",
   "private": true,
   "scripts": {

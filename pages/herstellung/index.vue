@@ -27,6 +27,9 @@
 <script>
 export default {
 	transition: 'page',
+  head: {
+    title: 'Herstellung - Stimmig Lautsprechersysteme'
+  },
   data() {
     return {
       images: {

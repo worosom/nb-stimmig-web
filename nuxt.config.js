@@ -1,7 +1,6 @@
 const pkg = require('./package')
 const webpack = require("webpack");
 
-
 module.exports = {
   mode: 'universal',
 
@@ -29,7 +28,7 @@ module.exports = {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: '#fff' },
+  loading: { color: '#000' },
 
   /*
    ** Global CSS
@@ -110,5 +109,10 @@ module.exports = {
         ]
       })
     }
+  },
+  generate: {
+    routes: [
+      '/produkte/heim-l'
+    ]
   }
 }
