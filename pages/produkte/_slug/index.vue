@@ -38,9 +38,7 @@
            order="1"
            order-md="2"
            class="spinner">
-      <no-ssr>
-        <product-viewer/>
-      </no-ssr>
+      <product-viewer/>
     </b-col>
     <b-col cols="12"
            md="6"

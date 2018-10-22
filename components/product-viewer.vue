@@ -134,6 +134,7 @@
 
 <script>
 import CircleLoader from '~/components/circle-loader';
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 const passive = {passive: true};
 const numImages = 36;
@@ -182,20 +183,19 @@ export default {
     `;
     },
     slide(e) {
-      e.preventDefault();
+      disableBodyScroll(this.$el);
       if (!Modernizr.touch)
         this.$el.requestPointerLock();
       this.sliding = true
       if (this.cta_visible) this.cta_visible = null;
-      document.body.setAttribute('style', 'overflow: hidden');
     },
     endSlide(e) {
+      enableBodyScroll(this.$el);
       if (!Modernizr.touch)
         document.exitPointerLock();
       this.sliding = false
       this.touch = false
       this.lastTouch = false
-      document.body.setAttribute('style', '');
     },
     updateProgress() {
       this.animating = Math.abs(this.velocity) > 0.0004;
@@ -210,7 +210,6 @@ export default {
         window.requestAnimationFrame(this.updateProgress);
     },
     updateVelocity(e) {
-      e.preventDefault();
       if (this.sliding) {
         if(!Modernizr.touch)
           this.movementX = e.movementX;
@@ -229,18 +228,20 @@ export default {
     }
   },
   mounted() {
+    if (window.innerWidth < 768) {
+      let l = document.getElementsByClassName('slider_image')
+      for(let i = 0; i < l.length; i++) {
+            l[i].setAttribute('style', `height: ${l[i].offsetHeight}px !important; max-height: unset`)
+      }
+    }
     this.$el.addEventListener("mousemove", this.updateVelocity, passive);
     this.$el.addEventListener("touchstart", this.slide, passive);
     this.$el.addEventListener("touchend", this.endSlide);
     this.$el.addEventListener("touchcancel", this.endSlide);
     this.$el.addEventListener("touchmove", this.updateVelocity, passive);
-    this.velocity = initialVelocity;
-    window.requestAnimationFrame(this.updateProgress);
-    this.animating = true;
-    // let l = document.getElementsByClassName('slider_image')
-    // for(let i = 0; i < l.length; i++) {
-    //       l[i].setAttribute('style', `height: ${l[i].offsetHeight}px !important; max-height: unset`)
-    // }
+    // this.velocity = initialVelocity;
+    // window.requestAnimationFrame(this.updateProgress);
+    // this.animating = true;
   },
   beforeDestroy() {
     this.$el.removeEventListener("mousemove", this.updateVelocity);
