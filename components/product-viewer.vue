@@ -231,7 +231,10 @@ export default {
     if (window.innerWidth < 768) {
       let l = document.getElementsByClassName('slider_image')
       for(let i = 0; i < l.length; i++) {
-            l[i].setAttribute('style', `height: ${l[i].offsetHeight}px !important; max-height: unset`)
+        const el = l[i];
+        el.addEventListener('load', () => {
+          el.setAttribute('style', `height: ${l[i].offsetHeight}px !important; max-height: unset`)
+        })
       }
     }
     this.$el.addEventListener("mousemove", this.updateVelocity, passive);
