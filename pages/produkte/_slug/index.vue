@@ -20,6 +20,10 @@
     }
   }
 }
+
+.spinner {
+  padding: 0;
+}
 </style>
 <template>
   <b-row>

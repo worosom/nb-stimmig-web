@@ -4,6 +4,20 @@
   min-height: calc( 100vh - 215px );
   width: 100%;
   height: 100%;
+  position: relative;
+  overflow: visible;
+  touch-action: none;
+  user-select: none;
+}
+
+.slider::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .slider {
@@ -12,7 +26,6 @@
   touch-action: none;
   width: 100%;
   height: 100%;
-  display: grid;
   position: relative;
   &_image {
     display: block;
@@ -24,6 +37,7 @@
     max-height: 100vh;
     z-index: 0;
 		opacity: 0;
+    will-change: opacity;
     @media (min-width: 768px) {
       max-height: calc( 100vh - 70px );
     }
@@ -32,23 +46,32 @@
 			opacity: 1;
     }
     &--hidden {
+      opacity: 0;
     }
   }
 }
 
 .slider_cta {
+  &.none {
+    display: none;
+  }
   font-size: 5rem;
   position: absolute;
   left: 50%;
-  top: -1rem;;
+  top: 0;
   color: rgba(200, 200, 200, .7);
   transform: translate3d(-50%, 0, 0);
   opacity: 0;
   transition: opacity 200ms ease;
   z-index: 4;
+  font-family: Oswald;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1;
 }
 
 .slider_cta_visible {
+  display: block;
   opacity: 1;
   animation: pulse 5s linear normal infinite;
 }
@@ -88,8 +111,10 @@
 <template>
   <div @mouseup="endSlide()"
        class="slider_wrap">
-    <i :class="'slider_cta fas fa-arrows-alt-h ' + cta_visible"
-        @mousedown="(e) => e.which === 1 ? slide() : null"></i>
+    <div @mousedown="(e) => e.which === 1 ? slide() : null" :class="'slider_cta ' + cta_visible">
+      360°<br>
+      <i class="fas fa-arrows-alt-h"></i>
+    </div>
     <div
         class="slider"
         @mousedown="(e) => e.which === 1 ? slide() : null"
@@ -100,12 +125,9 @@
           :key="key"
           :class="slider_image_class(key)"
           :src="images_src[key]"
-          :srcset="image.srcSet"
-          :data-error="image.placeholder"
-          :data-loading="image.placeholder"
           sizes="100vh"
           >
-      <circle-loader />
+      <circle-loader class="slider_loader" />
     </div>
   </div>
 </template>
@@ -120,13 +142,14 @@ const baseClass = "slider_image";
 const initialVelocity = 0;
 const draggingResistance = .4;
 const freeResistance = .97;
+const maxVelocity = .05;
 
 export default {
   components: { CircleLoader },
   data() {
     const _images_fallback = [];
     for (let i = 0; i < numImages; i++)
-      _images_fallback.push(require('~/assets/images/products/heim_l/360/'+i+'.jpg?size=128'));
+      _images_fallback.push(require('~/assets/images/products/heim_l/360/'+i+'.jpg?size=1024'));
     const _images = [];
     for (let i = 0; i < numImages; i++)
       _images.push(require('~/assets/images/products/heim_l/360/'+i+'.jpg'));
@@ -140,7 +163,7 @@ export default {
       movementX: 0.,
       lastTouch: false,
       touch: false,
-      cta_visible: 'slider_cta_visible'
+      cta_visible: 'slider_cta_visible',
     }
   },
   computed: {
@@ -151,7 +174,7 @@ export default {
   methods: {
     slider_image_class(key) {
       this.distance = this.selected_image - key;
-      this.visible = Math.abs(this.distance) < 1;
+      this.visible = Math.abs(this.distance) < 5;
       return `${baseClass}
       ${baseClass}_${key}
       ${baseClass}--${this.visible ? 'visible' : 'hidden'}
@@ -159,10 +182,12 @@ export default {
     `;
     },
     slide(e) {
+      e.preventDefault();
       if (!Modernizr.touch)
         this.$el.requestPointerLock();
       this.sliding = true
       if (this.cta_visible) this.cta_visible = null;
+      document.body.setAttribute('style', 'overflow: hidden');
     },
     endSlide(e) {
       if (!Modernizr.touch)
@@ -170,9 +195,12 @@ export default {
       this.sliding = false
       this.touch = false
       this.lastTouch = false
+      document.body.setAttribute('style', '');
     },
     updateProgress() {
       this.animating = Math.abs(this.velocity) > 0.0004;
+      if (Math.abs(this.velocity) > maxVelocity)
+        this.velocity = maxVelocity * Math.sign(this.velocity);
       this.progress -= this.velocity;
       this.progress = this.progress % 1;
       if (this.progress < 0)
@@ -182,6 +210,7 @@ export default {
         window.requestAnimationFrame(this.updateProgress);
     },
     updateVelocity(e) {
+      e.preventDefault();
       if (this.sliding) {
         if(!Modernizr.touch)
           this.movementX = e.movementX;
@@ -208,6 +237,10 @@ export default {
     this.velocity = initialVelocity;
     window.requestAnimationFrame(this.updateProgress);
     this.animating = true;
+    // let l = document.getElementsByClassName('slider_image')
+    // for(let i = 0; i < l.length; i++) {
+    //       l[i].setAttribute('style', `height: ${l[i].offsetHeight}px !important; max-height: unset`)
+    // }
   },
   beforeDestroy() {
     this.$el.removeEventListener("mousemove", this.updateVelocity);
