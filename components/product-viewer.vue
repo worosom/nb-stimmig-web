@@ -125,6 +125,7 @@
           :key="key"
           :class="slider_image_class(key)"
           :src="images_src[key]"
+          :srcset="images[key].srcSet"
           sizes="100vh"
           >
       <circle-loader class="slider_loader" />
