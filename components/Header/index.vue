@@ -21,6 +21,7 @@
   z-index: -1;
   margin-left: 50%;
   transform: translate3d(-50%, 0, 0);
+  z-index: -1;
 }
 </style>
 <template>
