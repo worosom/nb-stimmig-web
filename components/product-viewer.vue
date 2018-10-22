@@ -233,7 +233,9 @@ export default {
       for(let i = 0; i < l.length; i++) {
         const el = l[i];
         el.addEventListener('load', () => {
-          el.setAttribute('style', `height: ${l[i].offsetHeight}px !important; max-height: unset`)
+          window.requestAnimationFrame(() => {
+            el.setAttribute('style', `height: ${l[i].offsetHeight}px !important; max-height: unset`)
+          });
         })
       }
     }
