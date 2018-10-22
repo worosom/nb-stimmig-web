@@ -175,7 +175,7 @@ export default {
   methods: {
     slider_image_class(key) {
       this.distance = this.selected_image - key;
-      this.visible = Math.abs(this.distance) < 5;
+      this.visible = Math.abs(this.distance) < 1;
       return `${baseClass}
       ${baseClass}_${key}
       ${baseClass}--${this.visible ? 'visible' : 'hidden'}
