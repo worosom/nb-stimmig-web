@@ -11,6 +11,7 @@
     transform: translateY(-30%);
   }
   padding-left: 2rem;
+  z-index: 99;
 }
 .header_image {
   height: 100%;
