@@ -27,6 +27,9 @@
   width: 100%;
   height: 100%;
   position: relative;
+  &_loader {
+    z-index: -1;
+  }
   &_image {
     display: block;
     position: absolute;
@@ -36,33 +39,25 @@
     height: 100%;
     max-height: 100vh;
     z-index: 0;
-		opacity: 0;
+    opacity: 0;
     will-change: opacity;
     @media (min-width: 768px) {
       max-height: calc( 100vh - 70px );
     }
-    &--current {
-      z-index: 1;
-			opacity: 1;
-    }
-    &--hidden {
-      opacity: 0;
+    &--visible {
+      opacity: 1;
     }
   }
 }
 
 .slider_cta {
-  &.none {
-    display: none;
-  }
+  display: none;
   font-size: 5rem;
   position: absolute;
   left: 50%;
   top: 0;
   color: rgba(200, 200, 200, .7);
   transform: translate3d(-50%, 0, 0);
-  opacity: 0;
-  transition: opacity 200ms ease;
   z-index: 4;
   font-family: Oswald;
   font-weight: 500;
@@ -72,7 +67,6 @@
 
 .slider_cta_visible {
   display: block;
-  opacity: 1;
   animation: pulse 5s linear normal infinite;
 }
 
@@ -142,9 +136,10 @@ const numImages = 36;
 const baseClass = "slider_image";
 
 const initialVelocity = 0;
+const force = .7;
 const draggingResistance = .4;
 const freeResistance = .97;
-const maxVelocity = .05;
+const maxVelocity = .04;
 
 export default {
   components: { CircleLoader },
@@ -180,7 +175,6 @@ export default {
       return `${baseClass}
       ${baseClass}_${key}
       ${baseClass}--${this.visible ? 'visible' : 'hidden'}
-      ${this.distance === 0 ? `${baseClass}--current` : ''}
     `;
     },
     slide(e) {
@@ -220,7 +214,7 @@ export default {
           if (this.lastTouch)
             this.movementX = this.touch.screenX - this.lastTouch.screenX;
         }
-        this.velocity += this.movementX / window.innerWidth * .5;
+        this.velocity += this.movementX / window.innerWidth * force;
         if (!this.animating) {
           window.requestAnimationFrame(this.updateProgress);
           this.animating = true;
@@ -229,17 +223,6 @@ export default {
     }
   },
   mounted() {
-    if (window.innerWidth < 768) {
-      let l = document.getElementsByClassName('slider_image')
-      for(let i = 0; i < l.length; i++) {
-        const el = l[i];
-        el.addEventListener('load', () => {
-          window.requestAnimationFrame(() => {
-            el.setAttribute('style', `height: ${l[i].offsetHeight}px !important; max-height: unset`)
-          });
-        })
-      }
-    }
     this.$el.addEventListener("mousemove", this.updateVelocity, passive);
     this.$el.addEventListener("touchstart", this.slide, passive);
     this.$el.addEventListener("touchend", this.endSlide);
