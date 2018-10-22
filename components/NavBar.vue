@@ -1,6 +1,6 @@
 <style>
 .navbar {
-  z-index: 10;
+  z-index: 100;
   background-color: var( --white );
 }
 
