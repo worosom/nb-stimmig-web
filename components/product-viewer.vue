@@ -47,6 +47,9 @@
     &--visible {
       opacity: 1;
     }
+    &[data-loading="true"] {
+      opacity: 0;
+    }
   }
 }
 
@@ -121,6 +124,7 @@
           :src="images_src[key]"
           :srcset="images[key].srcSet"
           sizes="100vh"
+          data-loading="true"
           >
       <circle-loader class="slider_loader" />
     </div>
@@ -161,6 +165,7 @@ export default {
       lastTouch: false,
       touch: false,
       cta_visible: 'slider_cta_visible',
+			loaded: 0
     }
   },
   computed: {
@@ -223,6 +228,22 @@ export default {
     }
   },
   mounted() {
+		let l = document.getElementsByClassName('slider_image')
+		for(let i = 0; i < l.length; i++) {
+			const el = l[i];
+			if (el.complete) {
+				el.dataset.loading = 'false';
+				this.loaded++;
+			}
+			el.addEventListener('load', () => {
+				this.loaded++;
+				window.requestAnimationFrame(() => {
+					el.dataset.loading = 'false'
+					if (this.loaded >= this.numImages)
+						this.$nuxt.$loading.finish();
+				});
+			})
+		}
     this.$el.addEventListener("mousemove", this.updateVelocity, passive);
     this.$el.addEventListener("touchstart", this.slide, passive);
     this.$el.addEventListener("touchend", this.endSlide);
@@ -231,6 +252,9 @@ export default {
     // this.velocity = initialVelocity;
     // window.requestAnimationFrame(this.updateProgress);
     // this.animating = true;
+		this.$nextTick(() => {
+			this.$nuxt.$loading.start()
+		})
   },
   beforeDestroy() {
     this.$el.removeEventListener("mousemove", this.updateVelocity);
