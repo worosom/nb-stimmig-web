@@ -17,12 +17,15 @@ html {
 
 body {
   min-height: 100vh;
-  padding-bottom: 23rem;
+  padding-bottom: 28rem;
+  @media (min-width: 576px) {
+    padding-bottom: 31.5rem;
+  }
   @media (min-width: 768px) {
-    padding-bottom: 20rem;
+    padding-bottom: 26.5rem;
   }
   @media (min-width: 992px) {
-    padding-bottom: 17rem;
+    padding-bottom: 22rem;
   }
   bottom: 0;
   position: relative;

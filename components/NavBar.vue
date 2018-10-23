@@ -37,8 +37,7 @@
                 to="/herstellung"
               >Herstellung</b-nav-item>
               <b-nav-item
-                to="#footer"
-                v-scroll-to="'#footer'"
+                to="/impressum"
               >{{$t('impressum.title')}}</b-nav-item>
             </b-navbar-nav>
 

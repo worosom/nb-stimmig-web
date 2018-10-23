@@ -130,6 +130,9 @@ export default {
           },
           { key: 'Gewicht',
             value: '46 kg'
+          },
+          { key: 'Paarpreis',
+            value: '11.500 €'
           }
         ]
       }
