@@ -19,6 +19,12 @@
       hyphens: none;
     }
   }
+  .key {
+    vertical-align: top;
+  }
+  .value {
+    vertical-align: bottom;
+  }
 }
 
 .spinner {
@@ -54,12 +60,12 @@
           <tbody>
             <tr v-for="(item, key) in product.specifications"
                 :key="key">
-              <td class="d-md-block d-xl-table-cell pr-1 py-1 pb-md-0 py-lg-1">
+              <td class="key d-md-block d-xl-table-cell pr-1 py-1 pb-md-0 py-lg-1">
                 <strong class="mr-2">
                 {{item.key}}:
                 </strong>
               </td>
-              <td class="d-md-block d-xl-table-cell pl-1 py-1 pt-md-0 py-lg-1">
+              <td class="value d-md-block d-xl-table-cell pl-1 py-1 pt-md-0 py-lg-1">
                 {{item.value}}
               </td>
             </tr>

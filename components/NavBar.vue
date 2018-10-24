@@ -1,11 +1,30 @@
-<style>
+<style lang="scss">
 .navbar {
   z-index: 100;
   background-color: var( --white );
 }
+.navbar-collapse {
+  @media (max-width: 576px) {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background: white;
+  }
+}
+
 
 .navbar-brand {
   font-family: Oswald;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: .35rem;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0,0,0,.5);
+  }
 }
 </style>
 <template>
@@ -36,9 +55,6 @@
               <b-nav-item
                 to="/herstellung"
               >Herstellung</b-nav-item>
-              <b-nav-item
-                to="/impressum"
-              >{{$t('impressum.title')}}</b-nav-item>
             </b-navbar-nav>
 
             <!-- Right aligned nav items
