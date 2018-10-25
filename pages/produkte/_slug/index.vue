@@ -126,16 +126,19 @@ export default {
             value: '125 dB'
           },
           { key: 'Höhe',
-            value: '110 cm'
+            value: '112,5 cm'
           },
           { key: 'Breite',
             value: '38 cm'
           },
           { key: 'Tiefe',
-            value: '35 cm'
+            value: '23 cm'
+          },
+          { key: 'Tiefe mit Kühlkörper',
+            value: '27 cm'
           },
           { key: 'Gewicht',
-            value: '46 kg'
+            value: '38,7 kg'
           },
           { key: 'Paarpreis',
             value: '11.000 €'

@@ -1,5 +1,11 @@
 const pkg = require('./package')
 const webpack = require("webpack");
+const routes = [
+  '/motivation',
+  '/technik',
+  '/herstellung',
+  '/produkte/heim-l'
+]
 
 module.exports = {
   mode: 'universal',
@@ -36,6 +42,10 @@ module.exports = {
   css: [
     '@/assets/scss/main.scss'
   ],
+  sitemap: {
+    generate: true,
+    routes
+  },
 
   /*
   ** Plugins to load before mounting the App
@@ -62,7 +72,8 @@ module.exports = {
       defaultLocale: 'de',
       langDir: 'locales/',
       lazy: true
-    }]
+    }],
+    '@nuxtjs/sitemap'
   ],
 
   /*
@@ -111,12 +122,6 @@ module.exports = {
     }
   },
   generate: {
-    routes: [
-      '/motivation',
-      '/technik',
-      '/herstellung',
-      '/produkte',
-      '/produkte/heim-l'
-    ]
+    routes
   }
 }

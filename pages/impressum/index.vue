@@ -26,8 +26,6 @@
     margin-left: -2rem;
   }
 }
-@media (min-width: 768px) {
-}
 </style>
 <template>
   <b-container>
@@ -56,3 +54,10 @@
     </b-row>
   </b-container>
 </template>
+<script>
+export default {
+  head: {
+    title: 'Impressum - Stimmig Lautsprechersysteme'
+  }
+}
+</script>
