@@ -44,6 +44,7 @@ module.exports = {
   ],
   sitemap: {
     generate: true,
+    hostname: 'https://stimmig-lautsprechersysteme.de',
     routes
   },
 
