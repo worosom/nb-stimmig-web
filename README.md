@@ -1,7 +1,5 @@
 # nb-stimmig-web
 
-> My wondrous Nuxt.js project
-
 ## Build Setup
 
 ``` bash
