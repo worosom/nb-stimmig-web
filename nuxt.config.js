@@ -62,18 +62,6 @@ module.exports = {
   modules: [
     // Doc: https://bootstrap-vue.js.org/docs/
     ['bootstrap-vue/nuxt', { css: true }],
-    ['nuxt-i18n', {
-      locales: [
-        {
-          code: 'de',
-          file: 'de-DE.js',
-          iso: 'de-DE'
-        }
-      ],
-      defaultLocale: 'de',
-      langDir: 'locales/',
-      lazy: true
-    }],
     '@nuxtjs/sitemap'
   ],
 
